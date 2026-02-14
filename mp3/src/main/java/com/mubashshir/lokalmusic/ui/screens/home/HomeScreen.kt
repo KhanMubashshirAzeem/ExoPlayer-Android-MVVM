@@ -199,7 +199,7 @@ private fun HomeTabs(
         selectedTabIndex = pagerState.currentPage,
         edgePadding = 0.dp,
         indicator = { tabPositions ->
-            TabRowDefaults.Indicator(
+            TabRowDefaults.SecondaryIndicator(
                 modifier = Modifier.tabIndicatorOffset(
                     tabPositions[pagerState.currentPage]
                 ),

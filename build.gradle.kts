@@ -6,3 +6,10 @@ plugins {
     alias(libs.plugins.hilt.android) apply false
     alias(libs.plugins.ksp) apply false
 }
+
+
+
+// Add this to register a 'clean' task for the root project
+tasks.register("clean", Delete::class) {
+    delete(rootProject.buildDir)
+}

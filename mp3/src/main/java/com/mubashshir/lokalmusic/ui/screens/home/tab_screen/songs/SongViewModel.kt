@@ -11,6 +11,7 @@ import com.mubashshir.lokalmusic.data.repository.SongRepository
 import com.mubashshir.lokalmusic.data.repository.SongRepositoryImpl
 import com.mubashshir.lokalmusic.player.PlayerController
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.ExperimentalCoroutinesApi // 1. Import the annotation
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -22,23 +23,21 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @RequiresApi(Build.VERSION_CODES.O)
+@OptIn(ExperimentalCoroutinesApi::class) // 2. Add the OptIn annotation here
 @HiltViewModel
 class SongViewModel @Inject constructor(
     private val repository: SongRepository,
     private val playerController: PlayerController
-) : ViewModel()
-{
+) : ViewModel() {
 
     private val _query = MutableStateFlow("arijit")
 
     val songs: Flow<PagingData<Results>> =
         _query
             .flatMapLatest { query ->
-                if (repository is SongRepositoryImpl)
-                {
+                if (repository is SongRepositoryImpl) {
                     repository.searchSongsPaged(query)
-                } else
-                {
+                } else {
                     flowOf(PagingData.empty())
                 }
             }
@@ -50,8 +49,7 @@ class SongViewModel @Inject constructor(
 
     val isPlaying: StateFlow<Boolean> = playerController.isPlaying
 
-    init
-    {
+    init {
         viewModelScope.launch {
             playerController.currentSong.collectLatest { song ->
                 _currentSongId.value = song?.id
@@ -59,13 +57,11 @@ class SongViewModel @Inject constructor(
         }
     }
 
-    fun searchSongs(query: String)
-    {
+    fun searchSongs(query: String) {
         _query.value = query
     }
 
-    fun playSong(song: Results)
-    {
+    fun playSong(song: Results) {
         playerController.playSong(song)
     }
 }

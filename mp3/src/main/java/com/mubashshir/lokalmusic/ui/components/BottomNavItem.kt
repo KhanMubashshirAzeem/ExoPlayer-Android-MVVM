@@ -1,9 +1,9 @@
 package com.mubashshir.lokalmusic.ui.components
 
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.List
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.ui.graphics.vector.ImageVector
 
@@ -27,7 +27,7 @@ sealed class BottomNavItem(
 
     object Playlists : BottomNavItem(
         "playlists",
-        Icons.Default.List,
+        Icons.AutoMirrored.Filled.List,
         "Playlists"
     )
 

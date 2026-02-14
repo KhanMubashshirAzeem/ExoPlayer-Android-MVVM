@@ -37,34 +37,35 @@ fun LokalMusicTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     dynamicColor: Boolean = true,
     content: @Composable () -> Unit
-)
-{
-    val colorScheme = when
-    {
-        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S ->
-        {
+) {
+    val colorScheme = when {
+        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
             val context = LocalContext.current
             if (darkTheme) dynamicDarkColorScheme(
                 context
             ) else dynamicLightColorScheme(context)
         }
 
-        darkTheme                                                      -> DarkColorScheme
-        else                                                           -> LightColorScheme
+        darkTheme -> DarkColorScheme
+        else -> LightColorScheme
     }
     val view = LocalView.current
-    if (!view.isInEditMode)
-    {
+    if (!view.isInEditMode) {
         SideEffect {
             val window =
                 (view.context as Activity).window
-            window.statusBarColor =
-                colorScheme.primary.toArgb()
+
+            // 1. Set the status bar to be transparent
+            window.statusBarColor = Color.Transparent.toArgb()
+
+            // 2. Tell the system to draw the app content behind the status bar
+            WindowCompat.setDecorFitsSystemWindows(window, false)
+
+            // 3. Set the status bar icons to be light or dark depending on the theme
             WindowCompat.getInsetsController(
                 window,
                 view
-            ).isAppearanceLightStatusBars =
-                darkTheme
+            ).isAppearanceLightStatusBars = !darkTheme // Inverted logic: light theme needs dark icons
         }
     }
 

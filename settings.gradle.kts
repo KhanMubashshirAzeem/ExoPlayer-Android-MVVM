@@ -20,5 +20,5 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "Lokal Music"
-include(":app")
+include(":mp3")
  
