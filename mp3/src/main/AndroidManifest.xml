@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.mubashshir.exoplayer_android_mvvm"
+    >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -7,7 +9,7 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
 
     <application
-        android:name=".MusicApp"
+        android:name="MusicApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -18,7 +20,7 @@
         android:theme="@style/Theme.LokalMusic">
 
         <activity
-            android:name=".MainActivity"
+            android:name="com.mubashshir.exoplayer_android_mvvm.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.LokalMusic">
@@ -29,7 +31,7 @@
         </activity>
 
         <service
-            android:name=".service.LokalMusicService"
+            android:name="com.mubashshir.exoplayer_android_mvvm.service.LokalMusicService"
             android:exported="true"
             android:foregroundServiceType="mediaPlayback">
             <intent-filter>

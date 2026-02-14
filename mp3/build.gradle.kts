@@ -8,14 +8,14 @@ plugins {
 }
 
 android {
-    namespace = "com.mubashshir.lokalmusic"
+    namespace = "com.mubashshir.exoplayer_android_mvvm"
     compileSdk {
         version = release(36)
     }
 
     defaultConfig {
         applicationId =
-            "com.mubashshir.lokalmusic"
+            "com.mubashshir.exoplayer_android_mvvm"
         minSdk = 25
         targetSdk = 36
         versionCode = 1

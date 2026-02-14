@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Lokal Music"
+rootProject.name = "ExoPlayer Android MVVM"
 include(":mp3")
  
