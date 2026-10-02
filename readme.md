@@ -64,7 +64,10 @@ The project strictly adheres to **MVVM (Model-View-ViewModel)** architecture:
 
 ---
 
-## 6. Project Structure
+## 6. Project Architecture/Structure
+
+<img width="1266" height="826" alt="image" src="https://github.com/user-attachments/assets/a24f87d8-9cb5-4c41-80f3-e7c75e6ea7aa" />
+
 
 ```text
 Project
